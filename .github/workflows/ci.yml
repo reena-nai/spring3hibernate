@@ -32,8 +32,8 @@ jobs:
       run: |
            mvn -B clean package --file pom.xml
            echo ${{ github.workspace }}
-           mkdir artifacts && cd target
-           sudo cp -R Spring3HibernateApp.war ${{ github.workspace }}/artifacts
+           mkdir artifacts && sudo cp -R target/*.war
+           #sudo cp -R Spring3HibernateApp.war ${{ github.workspace }}/artifacts
            cd artifacts && ls
 
     # -name: make folder to keep artifacts
