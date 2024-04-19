@@ -30,12 +30,14 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B clean package --file pom.xml
+           mkdir artifacts && cp /target/*.war
+           cd artifacts && ls 
 
-    - name: Step 3 - Use the Upload Artifact GitHub Action
+    - name: save artifacts
       uses: actions/upload-artifact@v2
       with: 
-          name: assets-for-download
-          path: ‘${{ github.workspace }}/target/*.war’
+          name: github actions artifacts
+          path: artifacts
 
     - name: Run Tests
       run: mvn test
